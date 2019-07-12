@@ -1,0 +1,7 @@
+<div class="new-todo">
+  <mat-form-field class="example-form-field">
+    <input matInput #todo type="text" placeholder="Add New Todo" (keyup.enter)="submit(todo.value)">
+  </mat-form-field>
+  <button class="button check-btn" (click)="submit(todo.value)" mat-raised-button matTooltip="Add Todo" color="primary" mat-mini-fab><mat-icon >add</mat-icon></button>
+</div>
+

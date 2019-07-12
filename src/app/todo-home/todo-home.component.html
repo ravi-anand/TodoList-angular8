@@ -1,0 +1,36 @@
+<!-- <app-new-todo [todoList]='todoList'></app-new-todo> -->
+<app-navbar></app-navbar>
+<div class="home">
+    <app-new-todo (todoList)="onTodoList($event)"></app-new-todo>
+    <div *ngIf="todoList.length > 0" class="align-center">
+        <span matBadge="{{todoList.length}}" matBadgeOverlap="false" matBadgeColor="warn">
+            <mat-chip-list aria-label="Todo List to complete" class="align-block">
+                <mat-chip>Todo List to complete</mat-chip>
+            </mat-chip-list>
+        </span>
+    </div>
+    <div *ngFor="let item of todoList; let i=index" class="card-width">
+        <mat-card >
+            {{item}}
+            <button (click)="completed(i)" class="check-btn" color="primary" mat-mini-fab><mat-icon matTooltip="Mark as complete">done_all</mat-icon></button>
+        </mat-card>
+    </div>
+    <div *ngIf="todoList.length > 0 && completeList.length > 0">
+        <hr>
+    </div>
+    <div *ngIf="completeList.length > 0" class="align-center">
+        <span matBadge="{{completeList.length}}" matBadgeOverlap="false" matBadgeColor="warn">
+            <mat-chip-list aria-label="Archive" class="align-block">
+                <mat-chip>Archive</mat-chip>
+            </mat-chip-list>
+        </span>
+    </div>
+    <div *ngFor="let item of completeList; let i=index" class="card-width">
+        <mat-card>
+            {{item}}
+            <button (click)="add(i)" class="check-btn" color="primary" mat-mini-fab><mat-icon matTooltip="Add Todo Again">refresh</mat-icon></button>
+            <button (click)="remove(i)" class="check-btn" color="primary" mat-mini-fab><mat-icon matTooltip="Remove Todo">close</mat-icon></button>
+        </mat-card>
+        </div>
+
+</div>
